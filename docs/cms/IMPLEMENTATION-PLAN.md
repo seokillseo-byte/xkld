@@ -11,12 +11,12 @@ Status: planned; no production backend exists yet.
 - [ ] Confirm privacy, retention and legal information for lead capture.
 
 ## Phase B — backend bootstrap
-- [ ] Add Node.js LTS + TypeScript project, lockfile and environment schema.
-- [ ] Add health/readiness endpoints with safe output.
-- [ ] Add structured logging with redaction and request IDs.
-- [ ] Add test runner, lint/typecheck, CI and local development instructions.
+- [x] Add Node.js 22 + TypeScript project and environment schema. (Initial lockfile is still pending.)
+- [x] Add health/readiness endpoints with safe output.
+- [x] Add structured logging with redaction and request IDs.
+- [x] Add test runner, typecheck/build checks, CI and local development instructions. (Lint and deterministic lockfile remain follow-ups.)
 - [ ] Add PostgreSQL connection management and reviewed migration tool.
-- Acceptance: fresh checkout can install deterministically, run checks and start locally without production secrets.
+- [ ] Acceptance pending: generate/commit package-lock.json, switch CI to npm ci, and verify a fresh checkout installs deterministically. Current CI typecheck, tests and build are green using npm install.
 
 ## Phase C — identity, sessions and RBAC
 - [ ] Users, roles, permissions and initial role/permission seed.
