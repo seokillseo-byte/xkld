@@ -1,38 +1,41 @@
 # DuHocHaNoi — Website du học & làm việc quốc tế
 
-Bản giao diện khởi đầu cho thương hiệu **DuHocHaNoi**, nằm trong repository `seokillseo-byte/xkld`.
+Repository: `seokillseo-byte/xkld`
 
-## Đã có trong bản giao diện
+## Trạng thái hiện tại
 
-- Landing page responsive, ưu tiên mobile.
-- Điều hướng đến Du học, Làm việc quốc tế, Quốc gia, Lộ trình, Cẩm nang và Liên hệ.
-- Thẻ chương trình và bộ lọc Du học / Làm việc quốc tế.
-- Khu vực quốc gia, quy trình tư vấn, yếu tố tin cậy, cảnh báo an toàn, bài viết mẫu, FAQ.
-- Form tư vấn có kiểm tra trường bắt buộc và định dạng điện thoại cơ bản.
-- Metadata SEO cơ bản, canonical/OG, JSON-LD Organization, cấu trúc heading, liên kết nội bộ.
-- Lưu ý rõ form hiện là demo và **không gửi/lưu dữ liệu**.
+Đây là **bản nền giao diện public tĩnh**, chưa phải hệ thống CMS và chưa sẵn sàng nhận dữ liệu khách hàng thật.
 
-## Xem trước
+### Các trang đã có
+- `/` — trang chủ, định hướng du học và làm việc quốc tế.
+- `/du-hoc/` — lộ trình và checklist chuẩn bị du học.
+- `/xuat-khau-lao-dong/` — tìm hiểu chương trình làm việc ở nước ngoài và checklist an toàn.
+- `/quoc-gia/` — danh mục điểm đến.
+- `/quoc-gia/nhat-ban/` — trang thông tin khởi tạo về Nhật Bản.
+- `/cam-nang/` — thư viện chủ đề kiến thức.
+- `/lien-he/` — form demo, hiện không gửi hoặc lưu dữ liệu.
+- `/chinh-sach/quyen-rieng-tu/` và `/chinh-sach/dieu-khoan/` — khung nội dung chính sách cần rà soát pháp lý.
 
-GitHub Pages có thể được bật trong Settings → Pages sau khi chọn nhánh và thư mục xuất bản phù hợp. Đây hiện là website tĩnh trong `index.html`, chưa có backend/CMS.
+### Nền tảng giao diện
+- CSS và JavaScript dùng chung tại `assets/css/site.css` và `assets/js/site.js`.
+- Thiết kế responsive, điều hướng mobile, thẻ nội dung, FAQ/CTA và form kiểm tra dữ liệu cơ bản.
+- Có metadata title/description và robots directive cơ bản.
+- `robots.txt` cho phép crawler truy cập; chưa khai báo sitemap vì domain production chưa được xác nhận.
 
-## Việc bắt buộc trước khi đưa vào vận hành
+## Chạy thử
 
-1. Thay hotline, email, địa chỉ, tên pháp nhân, thông tin giấy phép và domain bằng dữ liệu đã xác minh.
-2. Xác nhận domain chính thức rồi cập nhật canonical, Open Graph, sitemap và Search Console.
-3. Xây dựng các trang chính sách quyền riêng tư, điều khoản dịch vụ, chính sách cookie và cơ chế đồng ý xử lý dữ liệu phù hợp.
-4. Kết nối form tới API/CRM có xác thực, chống spam, rate limit, kiểm soát truy cập, lưu trữ an toàn và thời hạn xóa dữ liệu.
-5. Thay nội dung/ảnh mẫu bằng thông tin và hình ảnh có quyền sử dụng; rà soát tính chính xác, nguồn và ngày cập nhật của mọi nội dung về visa, tuyển sinh, chi phí, việc làm và pháp luật.
-6. Không công bố lời hứa chắc chắn đậu visa, chắc chắn có việc hoặc thu nhập nếu không có căn cứ được xác minh.
+Có thể mở `index.html` trực tiếp để xem phần lớn giao diện. Để kiểm tra chính xác các đường dẫn bắt đầu bằng `/`, hãy chạy một static web server ở thư mục gốc hoặc bật GitHub Pages cho nhánh/thư mục phù hợp. Chưa cấu hình deploy trong thay đổi này.
 
-## Định hướng phát triển thành CMS chuyên ngành
+## Những điều chưa được xác minh — không đưa lên production
+- Domain chính thức; canonical, sitemap và Open Graph URL cần được cấu hình sau khi xác nhận domain.
+- Tên pháp nhân, giấy phép/phạm vi hoạt động, địa chỉ, hotline, email, giờ làm việc và thông tin đối tác.
+- Nội dung chương trình, chỉ tiêu, điều kiện, chi phí, lương, thời hạn và mọi tuyên bố về kết quả.
+- Các trang chính sách pháp lý hoàn chỉnh.
+- Form tư vấn chưa có backend, consent logging, chống spam, lưu trữ an toàn hay tích hợp CRM.
+- Chưa có CMS, xác thực/phân quyền, cơ sở dữ liệu, kiểm thử tự động hoặc pipeline CI.
 
-Xem `CMS-ROADMAP.md` để biết các module đề xuất. Không nên coi website tĩnh này là CMS hoàn chỉnh: chưa có đăng nhập quản trị, cơ sở dữ liệu, quản lý chương trình, workflow biên tập, CRM, upload media hay API.
+## Lộ trình triển khai
 
-## SEO và chất lượng
+Xem [CMS-ROADMAP.md](CMS-ROADMAP.md) và [CONTENT-QUALITY-CHECKLIST.md](CONTENT-QUALITY-CHECKLIST.md).
 
-- Tạo trang riêng cho từng quốc gia, chương trình, ngành nghề, trường/đối tác đã xác minh và nhóm câu hỏi có nhu cầu tìm kiếm thực.
-- Mỗi trang cần title/description duy nhất, canonical chính xác, breadcrumb, internal links, ảnh tối ưu, nguồn tham khảo và ngày cập nhật.
-- Thêm sitemap.xml, robots.txt, Search Console, analytics có cấu hình quyền riêng tư.
-- Structured data phải phản ánh nội dung thực sự hiển thị; không thêm đánh giá, giá, tổ chức/giấy phép hoặc dữ liệu giả.
-- Đo Core Web Vitals, khả năng truy cập bàn phím, tương phản, nhãn biểu mẫu và trải nghiệm trên thiết bị di động.
+Thứ tự khuyến nghị: chốt public UI và nội dung thật → chốt domain/SEO kỹ thuật → thiết kế CMS schema/auth/RBAC/audit log → CRUD và workflow biên tập → lead inbox/CRM → security, accessibility, performance và CI.
