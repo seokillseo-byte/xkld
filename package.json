@@ -3,21 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "tsx --test src/app.test.ts",
-    "check": "npm run typecheck && npm test && npm run build"
+    "test": "tsx --test src/app.test.ts src/db/migrations.test.ts",
+    "check": "npm run typecheck && npm test && npm run build",
+    "migrate:up": "node-pg-migrate up -m migrations"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "pino": "^9.6.0",
     "pg": "^8.13.3",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "node-pg-migrate": "^7.9.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
