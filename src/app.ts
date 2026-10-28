@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { type ErrorRequestHandler, type RequestHandler, createServer } from "node:http";
+import type { ErrorRequestHandler } from "express";
 import express from "express";
 import type { AppLogger } from "./observability/logger.js";
 
@@ -55,7 +55,7 @@ export function createApp({ logger, readinessCheck }: AppDependencies) {
     if (res.headersSent) return;
     res.status(400).json({ error: { code: "BAD_REQUEST", message: "Invalid request" } });
   };
-  app.use(errorHandler as RequestHandler);
+  app.use(errorHandler);
 
   return app;
 }
