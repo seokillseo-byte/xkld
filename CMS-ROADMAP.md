@@ -80,3 +80,21 @@ Xây dựng website/CMS chuyên ngành cho hai nhóm nhu cầu có hành trình 
 6. Lead capture có consent + inbox CRM.
 7. Analytics, monitoring, security review, accessibility/performance.
 8. Import nội dung thật, QA pháp lý và SEO trước khi phát hành.
+
+
+## Trạng thái triển khai — 2026-10-28
+
+### Public UI foundation (đang hoàn thiện)
+- Đã tách CSS/JavaScript dùng chung để các trang public sử dụng nhất quán.
+- Đã tạo các trang tĩnh: trang chủ, du học, làm việc quốc tế, danh mục quốc gia, Nhật Bản, cẩm nang, liên hệ và hai khung chính sách.
+- Form vẫn là demo; không gửi/lưu lead. Không có backend/CMS ở giai đoạn này.
+- Đã loại bỏ canonical và Organization JSON-LD dùng domain chưa được xác minh. Chỉ thêm lại sau khi chốt domain và xác minh thông tin pháp nhân.
+- Chưa thêm sitemap XML vì cần domain canonical thật.
+
+### Gate trước khi bắt đầu CMS
+1. Duyệt bố cục và luồng điều hướng public trên desktop/mobile.
+2. Xác minh toàn bộ thông tin pháp lý/liên hệ/chương trình; thay dữ liệu mẫu.
+3. Chốt domain production, canonical host và chiến lược deploy.
+4. Sau đó mới thiết kế schema CMS, auth/RBAC, audit log và API lead có kiểm soát.
+
+Checklist chi tiết: [CONTENT-QUALITY-CHECKLIST.md](CONTENT-QUALITY-CHECKLIST.md).
