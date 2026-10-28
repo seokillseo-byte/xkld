@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Add a Sitemap directive only after the production domain and sitemap URL are confirmed.
