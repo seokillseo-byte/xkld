@@ -98,3 +98,22 @@ Xây dựng website/CMS chuyên ngành cho hai nhóm nhu cầu có hành trình 
 4. Sau đó mới thiết kế schema CMS, auth/RBAC, audit log và API lead có kiểm soát.
 
 Checklist chi tiết: [CONTENT-QUALITY-CHECKLIST.md](CONTENT-QUALITY-CHECKLIST.md).
+
+
+## CMS foundation design — 2026-10-28
+
+The public-site quality workflow for PR #1 completed successfully. A separate draft branch now records the proposed CMS architecture before production backend code is introduced.
+
+Design artifacts:
+- `docs/architecture/ADR-001-cms-stack.md`: proposed Node.js/TypeScript API, PostgreSQL, layered architecture, session security, RBAC and editorial state transitions.
+- `docs/cms/DATA-MODEL.md`: proposed identity, content versioning, programme details, source attribution, lead and audit data model.
+- `docs/cms/API-CONTRACT.md`: proposed public/admin/auth/lead endpoint contracts and permission boundaries.
+
+This is a design step, not a working backend. No database, authentication, CMS UI, API or lead persistence has been deployed.
+
+### Before implementation
+1. Review the architecture and API contract.
+2. Confirm the production domain, hosting/deployment target, and whether public rendering remains static/SSG or becomes SSR.
+3. Confirm legal/contact/programme data and lead retention/privacy requirements.
+4. Then implement a minimal backend skeleton, database migrations, RBAC/session auth and automated integration tests in small PRs.
+5. Implement content CRUD and versioned editorial workflow before activating the lead form.
