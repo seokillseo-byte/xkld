@@ -26,14 +26,14 @@ export async function up(pgm) {
     user_id: { type: "uuid", notNull: true, references: "users(id)", onDelete: "CASCADE" },
     role_id: { type: "uuid", notNull: true, references: "roles(id)", onDelete: "RESTRICT" },
     granted_by: { type: "uuid", references: "users(id)", onDelete: "SET NULL" },
-    granted_at: { type: "timestamptz", notNull: true, default: pgm.func("current_timestamp") },
-    constraints: { primaryKey: ["user_id", "role_id"] }
+    granted_at: { type: "timestamptz", notNull: true, default: pgm.func("current_timestamp") }
   });
+  pgm.addConstraint("user_roles", "user_roles_pkey", { primaryKey: ["user_id", "role_id"] });
   pgm.createTable("role_permissions", {
     role_id: { type: "uuid", notNull: true, references: "roles(id)", onDelete: "CASCADE" },
-    permission_id: { type: "uuid", notNull: true, references: "permissions(id)", onDelete: "CASCADE" },
-    constraints: { primaryKey: ["role_id", "permission_id"] }
+    permission_id: { type: "uuid", notNull: true, references: "permissions(id)", onDelete: "CASCADE" }
   });
+  pgm.addConstraint("role_permissions", "role_permissions_pkey", { primaryKey: ["role_id", "permission_id"] });
   pgm.createTable("sessions", {
     id: { type: "uuid", primaryKey: true, default: pgm.func("gen_random_uuid()") },
     user_id: { type: "uuid", notNull: true, references: "users(id)", onDelete: "CASCADE" },
