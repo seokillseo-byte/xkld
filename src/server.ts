@@ -1,4 +1,4 @@
-import express from "express";
+import { createServer } from "node:http";
 import pg from "pg";
 import { createApp } from "./app.js";
 import { loadConfig } from "./config/env.js";
@@ -15,12 +15,23 @@ const app = createApp({
   logger,
   readinessCheck: async () => {
     if (!pool) return false;
-    const client = await pool.connect();
-    client.release();
-    return true;
+    const result = await pool.query("SELECT 1");
+    return result.rowCount === 1;
   }
 });
 
-const server = express();
-server.use(app);
+const server = createServer(app);
 server.listen(config.PORT, () => logger.info({ port: config.PORT }, "server_started"));
+
+async function shutdown(signal: string) {
+  logger.info({ signal }, "server_shutdown_started");
+  server.close(async (error) => {
+    if (error) {
+      logger.error({ errorName: error.name }, "server_shutdown_failed");
+      process.exitCode = 1;
+    }
+    await pool?.end();
+  });
+}
+process.on("SIGTERM", () => void shutdown("SIGTERM"));
+process.on("SIGINT", () => void shutdown("SIGINT"));
