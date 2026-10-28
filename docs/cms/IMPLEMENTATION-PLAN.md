@@ -15,8 +15,8 @@ Status: planned; no production backend exists yet.
 - [x] Add health/readiness endpoints with safe output.
 - [x] Add structured logging with redaction and request IDs.
 - [x] Add test runner, typecheck/build checks, CI and local development instructions. (Lint and deterministic lockfile remain follow-ups.)
-- [ ] Add PostgreSQL connection management and reviewed migration tool.
-- [ ] Acceptance pending: generate/commit package-lock.json, switch CI to npm ci, and verify a fresh checkout installs deterministically. Current CI typecheck, tests and build are green using npm install.
+- [x] Add PostgreSQL connection pool/readiness check and migration tool (node-pg-migrate).
+- [ ] Acceptance pending: generate/commit package-lock.json, switch CI to npm ci, and verify a fresh checkout installs deterministically. CI with PostgreSQL migrations was configured; latest run has not yet been confirmed.
 
 ## Phase C — identity, sessions and RBAC
 - [ ] Users, roles, permissions and initial role/permission seed.
@@ -49,7 +49,7 @@ Status: planned; no production backend exists yet.
 - Acceptance: consultant sees only authorized leads; no lead data leaks to public endpoints/logs.
 
 ## Phase G — release readiness
-- [ ] CI runs unit/integration tests against PostgreSQL, migrations, lint and typecheck.
+- [ ] Confirm latest CI run executes migrations and PostgreSQL integration tests; add lint after the lockfile/install workflow is stable.
 - [ ] Security review: auth, CSRF, IDOR, injection, upload, rate limits and secrets.
 - [ ] Backups/restore test, monitoring, HTTPS, security headers and environment separation.
 - [ ] Accessibility, performance, SEO crawlability and broken-link checks.
